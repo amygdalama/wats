@@ -17,6 +17,7 @@
             * `func_defaults`
         * Related fun thing: `func_code`
         * Use `None` instead
+        * Storing a cache
 3. Scope
     * Trivia! local vs global variables
     * Whyyyy
