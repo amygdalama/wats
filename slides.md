@@ -152,39 +152,6 @@ speaker notes: assignment creates a link between a name and an object. multiple 
 
 ============
 
-WHYYY?
-
->>> def wat():
-...     faves = ['cats', 'dragons']
-...     copy_of_faves = faves
-...     copy_of_faves.append('rainbows')
-...
->>> dis.dis(wat)
-
-  2           0 LOAD_CONST               1 ('cats')
-              3 LOAD_CONST               2 ('dragons')
-              6 BUILD_LIST               2
-              9 STORE_FAST               0 (faves)
-
-  3          12 LOAD_FAST                0 (faves)
-             15 STORE_FAST               1 (copy_of_faves)
-
-  4          18 LOAD_FAST                1 (copy_of_faves)
-             21 LOAD_ATTR                0 (append)
-             24 LOAD_CONST               3 ('rainbows')
-             27 CALL_FUNCTION            1
-             30 POP_TOP
-             31 LOAD_CONST               0 (None)
-             34 RETURN_VALUE
-
-
-(have this next to code, highlight relevant code/relevant bytecode step-by-step and walk through)
-(TODO: talk through with Allison)
-
-speaker notes:
-
-============
-
 TIPS
 
 * Use slicing
