@@ -1,3 +1,37 @@
+* determining equality -- `is` vs `==`
+    *
+        >>> [] is []
+        False
+        >>> {} is {}
+        False
+        >>> list() is list()
+        False
+        >>> dict() is dict()
+        False
+        >>> tuple() is tuple()
+        True
+
+        >>> 0 is 0
+        True
+        >>> float(0) is float(0)
+        False
+
+        >>> a = 'cat'
+        >>> b = 'cat'
+        >>> a is b
+        True
+        >>> c = ''.join(['c', 'a', 't'])
+        >>> c
+        'cat'
+        >>> a is c
+        False
+    * for that last example, see string interning: http://stackoverflow.com/questions/15541404/python-string-interning
+    * integers less than 256
+    * integers greater than 256
+    * on the same line of code!
+    * Allison's puzzle
+    * difference between comparing *values* and comparing *the same object in memory*
+    * ways to avoid it (always use `==` when comparing *values*)
 * mutability
     * GAME!
         >>> favorite_things = ['cats', 'dragons']
@@ -35,40 +69,6 @@
     >>> tup
     ([1], [])
     * http://emptysqua.re/blog/python-increment-is-weird-part-ii/
-* determining equality -- `is` vs `==`
-    *
-        >>> [] is []
-        False
-        >>> {} is {}
-        False
-        >>> list() is list()
-        False
-        >>> dict() is dict()
-        False
-        >>> tuple() is tuple()
-        True
-
-        >>> 0 is 0
-        True
-        >>> float(0) is float(0)
-        False
-
-        >>> a = 'cat'
-        >>> b = 'cat'
-        >>> a is b
-        True
-        >>> c = ''.join(['c', 'a', 't'])
-        >>> c
-        'cat'
-        >>> a is c
-        False
-    * for that last example, see string interning: http://stackoverflow.com/questions/15541404/python-string-interning
-    * integers less than 256
-    * integers greater than 256
-    * on the same line of code!
-    * Allison's puzzle
-    * difference between comparing *values* and comparing *the same object in memory*
-    * ways to avoid it (always use `==` when comparing *values*)
 * scope!
     * let's play... what will happen??
     * ex1
