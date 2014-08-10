@@ -1,3 +1,23 @@
+* mutability
+    * GAME!
+        >>> favorite_things = ['cats', 'dragons']
+        >>> copy_of_favorite_things = favorite_things
+        >>> copy_of_favorite_things.append('rainbows')
+        >>> copy_of_favorite_things
+        ???
+        ['cats', 'dragons', 'rainbows']
+        >>> favorite_things
+        ???
+        ['cats', 'dragons', 'rainbows']
+    * why does this happen? well, assignment (`=`) creates a link between a name and an object. multiple names can be linked to the *same object*, which is what happens here.
+    * make a real copy!
+        >>> favorite_things = ['cats', 'dragons']
+        >>> copy_of_favorite_things = favorite_things[:]
+        >>> copy_of_favorite_things.append('rainbows')
+        >>> copy_of_favorite_things
+        ['cats', 'dragons', 'rainbows']
+>>> favorite_things
+['cats', 'dragons']
 * mutable default arguments
     * my blog post
     * functions are objects!
@@ -158,6 +178,8 @@
     >>> g.bar = g.bar + 1
     >>> g.__dict__
     {'bar': 2}
+* `x += y` not doing the same thing as `x = x + y`
+    * what does this call underneath?
 
 Thanks to:
     * Gary Bernhardt
