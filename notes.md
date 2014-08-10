@@ -131,6 +131,59 @@
             2
             >>> a
             1
+    * bytecode
+        >>> def foo():
+        ...     print a
+        >>> dis.dis(foo)
+          2           0 LOAD_GLOBAL              0 (a)
+                      3 PRINT_ITEM
+                      4 PRINT_NEWLINE
+                      5 LOAD_CONST               0 (None)
+                      8 RETURN_VALUE
+        >>> def foo1():
+        ...     a += 1
+        ...     print a
+        ...
+        >>> dis.dis(foo1)
+          2           0 LOAD_FAST                0 (a)
+                      3 LOAD_CONST               1 (1)
+                      6 INPLACE_ADD
+                      7 STORE_FAST               0 (a)
+
+          3          10 LOAD_FAST                0 (a)
+                     13 PRINT_ITEM
+                     14 PRINT_NEWLINE
+                     15 LOAD_CONST               0 (None)
+                     18 RETURN_VALUE
+        >>> def foo2():
+        ...     a = 1
+        ...     print a
+        ...
+        >>> dis.dis(foo2)
+          2           0 LOAD_CONST               1 (1)
+                      3 STORE_FAST               0 (a)
+
+          3           6 LOAD_FAST                0 (a)
+                      9 PRINT_ITEM
+                     10 PRINT_NEWLINE
+                     11 LOAD_CONST               0 (None)
+                     14 RETURN_VALUE
+        >>> def foo3():
+        ...     global a
+        ...     a+=1
+        ...     print a
+        ...
+        >>> dis.dis(foo3)
+          3           0 LOAD_GLOBAL              0 (a)
+                      3 LOAD_CONST               1 (1)
+                      6 INPLACE_ADD
+                      7 STORE_GLOBAL             0 (a)
+
+          4          10 LOAD_GLOBAL              0 (a)
+                     13 PRINT_ITEM
+                     14 PRINT_NEWLINE
+                     15 LOAD_CONST               0 (None)
+                     18 RETURN_VALUE
 * (scope in closures) http://eev.ee/blog/2011/04/24/gotcha-python-scoping-closures/
 * comparing different types of objects
     * `1 < 'cat'`
