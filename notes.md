@@ -96,6 +96,7 @@
           File "<stdin>", line 1, in <module>
           File "<stdin>", line 2, in foo
         UnboundLocalError: local variable 'a' referenced before assignment
+    * reference: http://eli.thegreenplace.net/2011/05/15/understanding-unboundlocalerror-in-python/
     * what happens if you `print a` before assignment? would `a` get printed before the error is thrown? or not?
         >>> def foo():
         ...     print a
