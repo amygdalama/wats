@@ -14,6 +14,7 @@ Most of us have experienced unexpected behavior of Identity, Mutability, or Scop
 
 # Audience
 > Who is the intended audience for your talk? (Be specific; "Python programmers" is not a good answer to this question.)
+
 Programmers curious about Identity, Mutability, or Scope
 
 # Python Level
