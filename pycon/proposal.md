@@ -1,5 +1,5 @@
 # Title
-Investigating Python WATs: Identity, Mutability, and Scope
+Investigating Python Wats
 
 # Category
 Python Core
@@ -10,12 +10,12 @@ Python Core
 # Description
 > If your talk is accepted this will be made public and printed in the program. Should be one paragraph, maximum 400 characters.
 
-Most of us have experienced unexpected behavior of Identity, Mutability, or Scope in the CPython interpreter, but we might not have a rigorous understanding of why these unexpected behaviors occur. For each of these three topics, we'll look at some common surprising behaviors, investigate the cause of the behaviors, and cover some practical tips on how to avoid related bugs.
+Many of us have experienced a "wat" in Python - some behavior that totally mystifies us. We'll look at three areas where wats arise - identity, mutability, and scope. For each of these three topics, we'll look at some common surprising behaviors, investigate the cause of the behaviors, and cover some practical tips on how to avoid related bugs.
 
 # Audience
 > Who is the intended audience for your talk? (Be specific; "Python programmers" is not a good answer to this question.)
 
-Programmers curious about Identity, Mutability, or Scope
+Programmers who've experienced bugs around identity, mutability, or scope, but haven't developed a rigorous understanding of why the bugs occurred
 
 # Python Level
 Novice
@@ -23,7 +23,7 @@ Novice
 # Objectives
 > What will attendees get out of your talk? When they leave the room, what will they know that they didn't know before?
 
-Attendees will leave the talk with a more rigorous understanding of Identity, Mutability, and Scope, tools for avoiding bugs caused by common surprising behaviors, and some fun Python trivia.
+Attendees will leave the talk with a more rigorous understanding of identity, mutability, and scope, tools for avoiding bugs caused by common surprising behaviors, and some fun Python trivia.
 
 # Detailed Abstract
 > Detailed description. Will be made public if your talk is accepted.
@@ -33,7 +33,7 @@ First, we'll look at some common CPython gotchas involving object identity. We'l
 
 Then, we'll discuss why some of these statements evaluate to `True` and others `False`, and how object identity differs from equality. We'll discuss some implementation details of CPython, and how they lead to `is` evaluating differently for integers between -5 and 256 and integers outside that range.
 
-Finally, we'll cover some quick practical tips about how to avoid bugs resulting from using the `is` statement, based on what we've learned.
+Finally, we'll cover some quick practical tips about how to avoid bugs resulting from using the `is` statement.
 
 ## Mutability
 Again, we'll look at some common Python gotchas, this time caused by mutability.
@@ -130,7 +130,7 @@ After seeing some examples, we'll investigate how the Python interpreter does na
 
 2. Why? (3 min)
 
-    I'll explain how the default value of `l` for the function is a list that is created once (when we define the function), by introducing the `func_defaults` attribute of function objects. I'll show the value of `func_defaults` before executing the function, after executing it once, and after executing it a second time. Then I'll show that we can even mutate the value of `func_defaults` from outside the function body.
+    I'll explain how the default value of `l` for the function is a list that is created once (when we define the function), by introducing the `__defaults__` attribute of function objects (`__defaults__` in Python 2.x). I'll show the value of `__defaults__` before executing the function, after executing it once, and after executing it a second time. Then I'll show that we can even mutate the value of `__defaults__` from outside the function body.
 
 3. Tips (3 min)
 
@@ -152,7 +152,7 @@ After seeing some examples, we'll investigate how the Python interpreter does na
                 cache[student] = house
                 return house
 
-    And then I'll show how we could be malicious Hogwarts hackers by modifying the cache from outside the function body using `func_defaults` if we're displeased with how the `expesive_alg` sorts us.
+    And then I'll show how we could be malicious Hogwarts hackers by modifying the cache from outside the function body using `__defaults__` if we're displeased with how the `expensive_alg` sorts us.
 
 ## Scope (5 min)
 
@@ -189,13 +189,9 @@ After seeing some examples, we'll investigate how the Python interpreter does na
 # Additional Notes
 > Anything else you'd like the program committee to know when making their selection: your past speaking experience, open source community experience, etc.
 
-I gave a version of this talk at PyGotham this year, and it was very well received. It was recorded, and I'll post the link here when it's been uploaded to pyvideo.org. Here are the [slides](http://www.slideshare.net/AmyHanlon/python-wats-uncovering).
+I gave a version of this talk at PyGotham this year, and it was very well received -- the room was so packed that some attendees couldn't get in. It was recorded, and I'll post the link here when it's been uploaded to pyvideo.org. Here are the [slides](http://www.slideshare.net/AmyHanlon/python-wats-uncovering), and here are [some](https://twitter.com/ncoghlan_dev/status/503429783770779648) [tweets](https://twitter.com/paultag/status/503430094531346432) about the talk.
 
-Here are [some](https://twitter.com/ncoghlan_dev/status/503429783770779648) [tweets](https://twitter.com/paultag/status/503430094531346432) about the talk.
-
-I've also given a talk on replacing a keyword in Python at Open Source Bridge and Hack and Tell NYC. Here is the [proposal](http://opensourcebridge.org/sessions/1206) and the [slides](http://www.slideshare.net/AmyHanlon/replacing-import-with-accio).
-
-I have some previous experience speaking as a tour guide in a cavern.
+I've also given a talk on replacing a keyword in Python at Open Source Bridge and Hack and Tell NYC. Here is the [abstract](http://opensourcebridge.org/sessions/1206) and the [slides](http://www.slideshare.net/AmyHanlon/replacing-import-with-accio). I have some previous experience speaking as a tour guide at Natural Bridge Caverns in Texas.
 
 I blog at http://mathamy.com/
 
